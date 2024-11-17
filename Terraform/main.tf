@@ -39,7 +39,7 @@ resource "aws_iam_instance_profile" "ec2-profile" {
 }
 
 resource "aws_security_group" "kaimaingroup" {
-  egress = {
+  egress = [
     {
       cidr_blocks = ["0.0.0.0/0"]
       description = ""
@@ -51,12 +51,13 @@ resource "aws_security_group" "kaimaingroup" {
       self = false
       to_port = 0
     }
-  }
-  ingress = {
+  ]
+
+  ingress = [
     {
       cidr_blocks = ["0.0.0.0/0", ]
       description = ""
-      from_port =22
+      from_port = 22
       ipv6_cidr_blocks = []
       prefix_list_ids = []
       protocol = "tcp"
@@ -67,7 +68,7 @@ resource "aws_security_group" "kaimaingroup" {
     {
       cidr_blocks = ["0.0.0.0/0", ]
       description = ""
-      from_port =802
+      from_port = 80
       ipv6_cidr_blocks = []
       prefix_list_ids = []
       protocol = "tcp"
@@ -76,7 +77,7 @@ resource "aws_security_group" "kaimaingroup" {
       to_port = 80
     }
   
-    }
+  ]
 } 
 
 resource "aws_key_pair" "deployer" {
