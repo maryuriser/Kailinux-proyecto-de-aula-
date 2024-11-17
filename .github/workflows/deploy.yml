@@ -30,10 +30,10 @@ jobs:
         id: plan
         run: |-
           terraform plan \ 
-          -varm"regiom=us-east-2" \
-          -varm"public_key=$PUBLIC_SSH_KEY" \
-          -varm"private_key=$PRIVATE_SSH_KEY" \ 
-          -varm"key_name=deployer-key" \
+          -var="regiom=us-east-2" \
+          -var="public_key=$PUBLIC_SSH_KEY" \
+          -var="private_key=$PRIVATE_SSH_KEY" \ 
+          -var="key_name=deployer-key" \
           -out=PLAN
         working-directory: ./Terraform
       - name: Terraform Apply
