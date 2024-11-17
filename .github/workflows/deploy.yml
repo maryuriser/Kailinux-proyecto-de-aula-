@@ -29,13 +29,13 @@ jobs:
       - name: Terraform plan
         id: plan
         run: |-
-          Terraform plan \ 
+          terraform plan \ 
           -varm"regiom=us-east-2" \
           -varm"public_key=$PUBLIC_SSH_KEY" \
           -varm"private_key=$PRIVATE_SSH_KEY" \ 
           -varm"key_name=deployer-key" \
           -out=PLAN
-        working-directory: ./terraform
+        working-directory: ./Terraform
       - name: Terraform Apply
         id: apply
         run: terraform apply PLAN
