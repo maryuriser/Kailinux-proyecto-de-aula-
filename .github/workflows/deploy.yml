@@ -71,7 +71,7 @@ jobs:
                 sudo docker pull $REGISTRY/$REPOSITORY:$IMAGE_TAG
                 sudo mkdir -p ~/illa/database
                 sudo mkdir -p ~/illa/drive
-                sudo docker run -d -p 80:8080 --name kailinuxappcontainer -v ~/illa/database:/opt/illa/database -v ~/illa/drive:/opt/illa/drive $REGISTRY/$REPOSITORY:$IMAGE_TAG
+                sudo docker run -d -p 80:2022 --name kailinuxappcontainer -v ~/illa/database:/opt/illa/database -v ~/illa/drive:/opt/illa/drive $REGISTRY/$REPOSITORY:$IMAGE_TAG
 
 
 
