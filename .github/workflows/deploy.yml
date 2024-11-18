@@ -63,7 +63,7 @@ jobs:
               REPOSITORY: illa-builder
               IMAGE_TAG: main
               AWS_DEFAULT_REGION: us-east-1
-            uses: appleboy/ssh-action@master
+            uses: appleboy/ssh-action@v1.2.0
             with:
               host: ${{ env.SERVER_PUBLIC_IP }}
               username: ubuntu
