@@ -65,7 +65,7 @@ jobs:
               AWS_DEFAULT_REGION: us-east-2
             uses: appleboy/ssh-action@v1.2.0
             with:
-              host: ${{ env.SERVER_PUBLIC_IP}}
+              host: "18.188.92.161"
               username: ubuntu
               key: ${{ env.PRIVATE_SSH_KEY }}
               envs: PRIVATE_SSH_KEY,REGISTRY,REPOSITORY,IMAGE_TAG, AWS_ACCESS_KEY_ID,AWS_SECRET_ACCESS_KEY,AWS_DEFAULT_REGION,AWS_REGION
