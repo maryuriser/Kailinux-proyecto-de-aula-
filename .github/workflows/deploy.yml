@@ -71,13 +71,13 @@ jobs:
               envs: PRIVATE_SSH_KEY,REGISTRY,REPOSITORY,IMAGE_TAG, AWS_ACCESS_KEY_ID,AWS_SECRET_ACCESS_KEY,AWS_DEFAULT_REGION,AWS_REGION
               script: |
                 sudo apt update
-                sudo apt install docker.oi -y
-                sudo apt install awstall awscli -y 
-                sudo $(aws ecr get-login --no-incluide-email --region us-east-2);
-                sudo doker stop kailinuxappcontiner || true
-                sudo docker rm kailinuxappcontiner || true
+                sudo apt install docker.io -y
+                sudo apt install awscli -y 
+                sudo $(aws ecr get-login --no-include-email --region us-east-2);
+                sudo docker stop kailinuxappcontainer || true
+                sudo docker rm kailinuxappcontainer || true
                 sudo docker pull $REGISTRY/$REPOSITORY:$IMAGE_TAG
-                sudo docker run -d --name kailinuxappcontiner -p 80:8080 $REGISTRY/$REPOSITORY:$IMAGE_TAG
+                sudo docker run -d --name kailinuxappcontainer -p 80:8080 $REGISTRY/$REPOSITORY:$IMAGE_TAG
 
 
           
