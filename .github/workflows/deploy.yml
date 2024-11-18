@@ -73,11 +73,11 @@ jobs:
                 sudo apt update
                 sudo apt install docker.io -y
                 sudo apt install awscli -y 
-                sudo $(aws ecr get-login --no-include-email --region us-east-2);
+                sudo $(aws ecr get-login-password --no-include-email --region us-east-2);
                 sudo docker stop kailinuxappcontainer || true
                 sudo docker rm kailinuxappcontainer || true
                 sudo docker pull $REGISTRY/$REPOSITORY:$IMAGE_TAG
-                sudo docker run -d --name kailinuxappcontainer -p 80:8080 $REGISTRY/$REPOSITORY:$IMAGE_TAG
+                sudo docker run -d --name kailinuxappcontainer -p 80:2022 $REGISTRY/$REPOSITORY:$IMAGE_TAG
 
 
           
