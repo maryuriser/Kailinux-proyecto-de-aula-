@@ -33,9 +33,7 @@ resource "aws_instance" "kaiserver" {
   }
 }
 
-output "instance_public_ip" {
-  value = aws_instance.kaiserver.public_ip
-}
+
 
 resource "aws_iam_instance_profile" "ec2-profile" {
   name = "ec2-profile"
