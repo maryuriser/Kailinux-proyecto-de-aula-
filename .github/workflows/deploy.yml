@@ -57,13 +57,6 @@ jobs:
           - name: Login to AWS ECR
             id: login-ecr
             uses: aws-actions/amazon-ecr-login@v1
-          - name: Build, push docker image
-            env:
-              REGISTRY: illasoft
-              REPOSITORY: illa-builder
-              IMAGE_TAG: main
-            run: |
-              docker push $REGISTRY/$REPOSITORY:$IMAGE_TAG
           - name: Deploy docker image to EC2
             env:
               REGISTRY: illasoft
