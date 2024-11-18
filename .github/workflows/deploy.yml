@@ -10,6 +10,7 @@ env:
   TF_STATE_BUCKET_NAME: ${{ secrets.AWS_TF_STATE_BUCKET_NAME }}
   PRIVATE_SSH_KEY: ${{ secrets.AWS_SSH_KEY_PRIVATE }}
   PUBLIC_SSH_KEY: ${{ secrets.AWS_SSH_KEY_PUBLIC }}
+  PUBLIC_IP: ${{ secrets.SERVER_PUBLIC_IP }}
   AWS_REGION: us-east-2
 
 jobs:
@@ -33,6 +34,7 @@ jobs:
           -var="region=${{ env.AWS_REGION }}" \
           -var="public_key=${{ env.PUBLIC_SSH_KEY }}" \
           -var="private_key=${{ env.PRIVATE_SSH_KEY }}" \
+          -var="public_ip=${{ env.SERVER_PUBLIC_IP}}" \
           -var="key_name=deployer-key" \
           -out=PLAN
         working-directory: ./Terraform
@@ -60,7 +62,7 @@ jobs:
               host: ${{ env.SERVER_PUBLIC_IP}}
               username: ubuntu
               key: ${{ env.PRIVATE_SSH_KEY }}
-              envs: PRIVATE_SSH_KEY,REGISTRY,REPOSITORY,IMAGE_TAG, AWS_ACCESS_KEY_ID,AWS_SECRET_ACCESS_KEY,AWS_DEFAULT_REGION,AWS_REGION
+              envs: SERVER_PUBLIC_IP,PRIVATE_SSH_KEY,REGISTRY,REPOSITORY,IMAGE_TAG, AWS_ACCESS_KEY_ID,AWS_SECRET_ACCESS_KEY,AWS_DEFAULT_REGION,AWS_REGION
               script: |
                 sudo apt update
                 sudo apt install docker.io -y
